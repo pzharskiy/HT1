@@ -351,6 +351,14 @@ public class ManagePersonServlet extends HttpServlet {
 	}
 
 	private String validateNumber(String number) {
-		return null;
+			
+		Matcher matcher = Pattern.compile("^((\\+)|(\\#))[0-9]{2,50})$").matcher(number);
+
+		if (matcher.matches()) {
+			return null;
+		} else {
+			System.out.println("Номер телефона может включать в себя 2-50 символов: цифра, +, -, #.");
+		}
+		return "Номер телефона может включать в себя 2-50 символов: цифра, +, -, #.";
 	}
 }
